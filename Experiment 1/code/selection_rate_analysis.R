@@ -114,7 +114,7 @@ CRISPR_rate_plot <- ggplot(aes(x=Treatment, y=r),
 
 last_plot()
 
-ggsave("rate_CRISPR_raw.png", CRISPR_rate_plot, path="./Experiment 1/docs/", device="png", dpi=600,
+ggsave("rate_CRISPR_raw.png", CRISPR_rate_plot, path="./Experiment 1/figs/", device="png", dpi=600,
        width=28, height = 20, units = c("cm"))
 
 #### ---- BIM raw data boxplot ---- ####
@@ -136,7 +136,7 @@ BIM_rate_plot <- ggplot(aes(x=Treatment, y=r),
   NULL
 last_plot()
 
-ggsave("rate_BIM_raw.png", BIM_rate_plot, path="./Experiment 1/docs/", device="png", dpi=600,
+ggsave("rate_BIM_raw.png", BIM_rate_plot, path="./Experiment 1/figs/", device="png", dpi=600,
        width=28, height = 20, units = c("cm"))
 
 ### ---- lme4 CRISPR models ---- ####

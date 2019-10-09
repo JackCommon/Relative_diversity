@@ -201,13 +201,13 @@ phage_plot
 CRISPR_SM_plot
 CRISPR_BIM_plot
 
-ggsave("phage_plot.png", phage_plot, path="Experiment 1/docs/", device="png", dpi=600,
+ggsave("phage_plot.png", phage_plot, path="Experiment 1/figs/", device="png", dpi=600,
        width=28, height = 20, units = c("cm"))
 
-ggsave("cfu_CRISPR_SM.png", CRISPR_SM_plot, path="./Experiment 1/docs/", device="png", dpi=600,
+ggsave("cfu_CRISPR_SM.png", CRISPR_SM_plot, path="./Experiment 1/figs/", device="png", dpi=600,
        width=28, height = 20, units = c("cm"))
 
-ggsave("cfu_CRISPR_BIM.png", CRISPR_BIM_plot, path="./Experiment 1/docs/", device="png", dpi=600,
+ggsave("cfu_CRISPR_BIM.png", CRISPR_BIM_plot, path="./Experiment 1/figs/", device="png", dpi=600,
        width=28, height = 20, units = c("cm"))
 
 

@@ -130,7 +130,7 @@ phage_comparison <- ggplot(aes(y=log10(Titre+1), x=Timepoint), data=combined_pha
 
 last_plot()
 
-ggsave("phage_comparison.png", phage_comparison, path="Experiment 1/docs/", device="png", dpi=600,
+ggsave("phage_comparison.png", phage_comparison, path="Experiment 1/figs/", device="png", dpi=600,
        width=28, height = 20, units = c("cm"))
 
 #
@@ -207,7 +207,7 @@ CRISPR_rate_comp <- ggplot(aes(x=Treatment, y=r),
 
 last_plot()
 
-ggsave("rate_CRISPR_comparison.png", CRISPR_rate_comp, path="Experiment 1/docs/", device="png", dpi=600,
+ggsave("rate_CRISPR_comparison.png", CRISPR_rate_comp, path="Experiment 1/figs/", device="png", dpi=600,
        width=28, height = 20, units = c("cm"))
 
 #### ---- CRISPR lme4 ---- #####
@@ -254,7 +254,7 @@ BIM_rate_comp <- ggplot(aes(x=Treatment, y=r),
   NULL
 last_plot()
 
-ggsave("rate_BIM_comparison.png", BIM_rate_comp, path="Experiment 1/docs/", device="png", dpi=600,
+ggsave("rate_BIM_comparison.png", BIM_rate_comp, path="Experiment 1/figs/", device="png", dpi=600,
        width=28, height = 20, units = c("cm"))
 
 #### ---- BIM lme4 ---- ####
