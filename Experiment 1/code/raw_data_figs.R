@@ -1,5 +1,13 @@
-#### ---- Relative diversity Exp 1:  ---- ####
-#### Created: 04/10/19 by Jack Common
+#### raw_data_figs.R by Jack Common
+#### Code to generate figures that display the raw data from an experiment where
+#### increasingly diverse CRISPR populations were treated with phage populations
+#### with matching genotype diversity. 
+#### Raw data includes:
+####        - Overall phage titres
+####        - Phage titres by genotype
+####        - Titres of SM, unlabelled, and lacZ-labelled CRISPR clones
+
+#### Created: 04/10/19
 
 rm(list=ls())
 
@@ -101,7 +109,7 @@ phage$Treatment %<>% relevel(ref="3")
 write.csv(phage, "./Experiment 1/original_data/phage_data.csv", row.names = F)
 
 #### ---- Visualise data ---- ####
-#### -- Phage titre -- #####
+#### -- Overall Phage titre -- #####
 phage_plot <- ggplot(aes(y=log10(Titre+1), x=Timepoint, group=Replicate), data=phage)+
   
   #geom_point(stat='identity')+

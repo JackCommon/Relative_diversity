@@ -1,3 +1,9 @@
+#### comparison_code.R by Jack Common
+#### Code to generate figures and models that compare phage titre and selection rates
+#### between experiments where a gradient of polyclonal CRISPR host populations were  
+#### treated with either monoclonal or polyclonal phage. Data for monoclonal phage
+#### experiments is derived from Common et al 2019 Ecol Lett
+
 rm(list=ls())
 options(show.signif.stars = F)
 
@@ -11,7 +17,6 @@ library(lme4)
 library(magrittr)
 library(tidyverse)
 library(lmerTest)
-library(MCMCglmm)
 
 #### ---- Functions ---- ####
 ## Compare AIC values for model fit
