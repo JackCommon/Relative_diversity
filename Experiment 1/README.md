@@ -1,4 +1,4 @@
--Relative diversity: Experiment 1
+# Relative diversity: Experiment 1
 
 Frequency-dependent benefits of host diversity (dilution effects) are widespread in natural host-pathogen systems (Civitello et al. 2015 PNAS). Increasing the number of resistant or low-quality hosts decreases the fraction of susceptible hosts, reducing contact rates between free-living pathogens or infectious individuals, which in turn limits the basic reproduction number of the pathogen (Dobson 2004 Am Nat; Gandon 2004 Evol; Lively 2010 Am Nat). Frequency-dependence influences phage dynamics (Dennehy et al. 2007 Ecol Lett; Common & Westra 2019 RNA Bio) and evolutionary emergence.
 
