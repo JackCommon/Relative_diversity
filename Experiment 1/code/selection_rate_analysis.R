@@ -205,7 +205,4 @@ summary(m3)
 anova(m4, type="marginal")
 ggcoefstats(m2)
 
-predict(m2, d.CRISPR, type="response") %>% 
-  unique
-
 
