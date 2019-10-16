@@ -9,10 +9,8 @@ options(show.signif.stars = F)
 
 #### ---- Dependencies ---- ####
 library(scales)
-library(ggstatsplot)
 library(cowplot)
 library(ggplot2)
-library(plyr)
 library(lme4)
 library(magrittr)
 library(tidyverse)
@@ -125,7 +123,8 @@ phage_comparison <- ggplot(aes(y=log10(Titre+1), x=Timepoint), data=combined_pha
   theme(axis.text = element_text(size=12),
         legend.title = element_text(face="bold", size=16),
         legend.text = element_text(size=12),
-        legend.key.height = unit(1, "cm"))+
+        legend.key.height = unit(1, "cm"),
+        panel.grid.major = element_line(colour="lightgrey", size=.25))+
   NULL
 
 last_plot()
@@ -140,6 +139,8 @@ m1 <- lmer(log(Titre+1)~Experiment+Treatment+Timepoint+(1|Replicate),
            data=filter(combined_phage, Timepoint!="0"))
 summary(m1)
 anova(m1)
+
+confint(m1, parm="beta_", method="boot")
 
 #### ---- Selection rates ---- ####
 reldiv_rates <- read.csv("./Experiment 1/original_data/reldiv_exp1_master.csv", header=T, skip = 1)  %>% 
@@ -226,10 +227,10 @@ m4 <- lmer(r~Experiment+Treatment+Timepoint+(1|Replicate),
 
 AIC(m1, m2, m3, m4) %>% compare_AICs()
 
-summary(m4)
+summary(m2)
 anova(m4)
 
-confint(m4, parm="beta_", method="boot")
+confint(m2, parm="beta_", method="boot")
 
 #### ---- BIM boxplot ---- ####
 BIM_rate_comp <- ggplot(aes(x=Treatment, y=r), 
@@ -273,5 +274,7 @@ m4 <- lmer(r~Experiment+Treatment+Timepoint+(1|Replicate),
 
 AIC(m1, m2, m3, m4) %>% compare_AICs()
 
-summary(m4)
-anova(m4, type="marginal")
+summary(m3)
+anova(m2, type="marginal")
+
+confint(m3, parm="beta_", method="boot")
