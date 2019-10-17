@@ -280,6 +280,42 @@ anova(m2, type="marginal")
 confint(m3, parm="beta_", method="boot")
 
 #### ---- Paper figures ---- ####
+## Figure 1 - Phage comparison 
+Fig1 <- ggplot(aes(y=log10(Titre+1), x=Timepoint), data=combined_phage)+
+  
+  geom_boxplot(width=0.5, outlier.shape = NA, position=pd, aes(colour=Experiment))+
+  geom_point(width=0.2, alpha=0.5, pch=21, position=pd, aes(colour=Experiment))+
+  # stat_summary(fun.y="mean", geom="point", aes(colour=Experiment), position=pd)+
+  # stat_summary(fun.data = "mean_cl_boot", geom="errorbar", width=0, aes(colour=Experiment), position=pd)+
+  #geom_path(stat='identity', alpha=0.5, position=pd, aes(colour=Experiment, group=Replicate))+
+  #geom_hline(yintercept = 100, linetype=2)+
+  facet_wrap(~Treatment)+
+  
+  labs(x="Days post-infection", y=expression(bold("Pfu ml"*{}^{-1}*"")))+
+  #ggtitle("Density of phage")+
+  
+  cowplot::theme_cowplot()+
+  theme(plot.title = element_text(face="bold", hjust=0, size = 16),
+        axis.title = element_text(face="bold", size=16),
+        strip.text = element_text(face='bold', size=14, lineheight = 3))+
+  
+  coord_cartesian(ylim=c(0, 12))+
+  scale_y_continuous(breaks=c(seq(0,12,2)),
+                     labels=pfu_labels)+
+  scale_colour_discrete(labels = c("CRISPR allele diversity", "CRISPR allele & phage\ndiversity"))+
+  
+  theme(axis.text = element_text(size=12),
+        legend.title = element_text(face="bold", size=16),
+        legend.text = element_text(size=12),
+        legend.key.height = unit(1, "cm"),
+        panel.grid.major = element_line(colour="lightgrey", size=.25))+
+  NULL
+
+last_plot()
+
+ggsave("Figure 1.png", Fig1, path="Experiment 1/figs/", device="png", dpi=600,
+       width=28, height = 20, units = c("cm"))
+
 ## Figure 2 - CRIPSR rate comparison
 
 pd <- position_dodge(0.2)
@@ -293,7 +329,7 @@ Fig2 <- ggplot(aes(x=Treatment, y=r),
   # stat_summary(fun.y="mean", geom="point", aes(colour=Experiment, position=Experiment), position=pd)+
   # stat_summary(fun.data = "mean_cl_boot", geom="errorbar", width=0, aes(colour=Experiment), position=pd)+
   # facet_wrap(~Timepoint, labeller = timepoint_labeller, ncol=2)+
-  labs(y="Selection rate (day -1) of CRISPR", x="Number of CRISPR and phage clones")+
+  labs(y="Selection rate of CRISPR", x="Number of CRISPR and phage clones")+
   scale_x_discrete(labels = treatment_list)+
   #scale_y_continuous(breaks=c(seq(-1.5, 2, 0.5)))+
   scale_colour_discrete(labels = c("CRISPR allele diversity", "CRISPR allele & phage\ndiversity"))+
@@ -321,7 +357,7 @@ Fig3 <- ggplot(aes(x=Treatment, y=r),
   # stat_summary(fun.y="mean", geom="point", aes(colour=Experiment), position=pd)+
   # stat_summary(fun.data = "mean_cl_boot", geom="errorbar", width=0, aes(colour=Experiment), position=pd)+
   # facet_wrap(~Timepoint, labeller = timepoint_labeller, ncol=2)+
-  labs(y="Selection rate (day -1) of\nsusceptible clone", x="Number of CRISPR and phage clones")+
+  labs(y="Selection rate of\nsusceptible clone", x="Number of CRISPR and phage clones")+
   scale_x_discrete(labels = treatment_list)+
   #scale_y_continuous(breaks=c(seq(-1.5, 2, 0.5)))+
   scale_colour_discrete(labels = c("CRISPR allele diversity", "CRISPR allele & phage\ndiversity"))+

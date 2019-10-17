@@ -167,11 +167,14 @@ plot(m3)
 plot(m4)
 
 summary(m3)
-anova(m3, type="marginal")
-ggcoefstats(m2)
 
-predict(m3, d.CRISPR, type="response") %>% 
-  unique
+# AIC comparisons indicate that m2 is the best-performing, so use that to do F-tests
+# for the effect of days-post infection (timepoint), and the next best-performing (m1),
+# to get F-tests for the effect of diversity treatment
+
+anova(m1, type="marginal")
+anova(m2, type="marginal")
+
 
 ### ---- lme4 BIM models ---- ####
 d.BIM <- rates %>% 
@@ -202,7 +205,9 @@ plot(m4)
 
 summary(m4)
 summary(m3)
-anova(m4, type="marginal")
-ggcoefstats(m2)
 
+# AIC comparisons indicate that m4 is the best-performing, so use that to do F-tests
+# for the effect of days-post infection (timepoint) and the effect of diversity treatment
+
+anova(m4, type="marginal")
 
